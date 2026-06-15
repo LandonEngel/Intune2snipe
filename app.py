@@ -348,7 +348,8 @@ class SnipeITClient:
         """Look up an existing asset by serial number. Returns asset dict or None."""
         if not serial:
             return None
-        data = self._get("/hardware/byserial", params={"serial": serial})
+        path = f"/hardware/byserial/{serial}"
+        data = self._get(path)
         rows = data.get("rows", [])
         return rows[0] if rows else None
 
